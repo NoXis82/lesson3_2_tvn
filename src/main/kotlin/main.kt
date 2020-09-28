@@ -11,15 +11,19 @@ private fun commissionAmount(
         cardType: String = "VK Pay",
         monthTransfer: Long = 0L,
         transfer: Long
-) {
-    when (cardType) {
+): Long {
+    return when (cardType) {
         "MasterCard", "Maestro" -> {
             calForMasterMaestroCard(monthTransfer, transfer)
         }
         "Visa", "Мир" -> {
-            calForVisaMirCard(transfer)
+           calForVisaMirCard(transfer)
         }
-        "VK Pay" -> println("Комиссия не взимается")
+        "VK Pay" -> {
+            println("Комиссия не взимается")
+            0
+        }
+        else -> 0
     }
 }
 
